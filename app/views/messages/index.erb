@@ -1,6 +1,12 @@
 <a href="/messages/new">Post a message... Its free!</a>
 <% @messages.each do |message| %>
   <div class='message'>
-    <h3><a href='/messages/<%= message.id %>'><%= message.content %><a><small>(by: <%= message.author %>)</small></h3>
+    <h3><a href='/messages/<%= message.id %>'><%= message.content %></a></h3>
+    <% if message.url.nil? %>
+    <% else %>
+      <button><a href='<%= message.url %>' /><small>URL</small></a></button>
+    <% end %>
+    <small>(by: <%= message.author %>)</small>
+   <hr width="40%" align="left"> 
   </div>
 <% end %>
